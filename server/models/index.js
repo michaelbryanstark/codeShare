@@ -7,7 +7,7 @@ const configs = {
     useFindAndModify: false,
 };
 
-mongoose.connect(process.env.DB_URL, configs);
+mongoose.connect(process.env.DB_URL);
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {

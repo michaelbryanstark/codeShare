@@ -1,0 +1,9 @@
+const router = require('express').Router();
+
+// ===== These routes are being prepended by api/ in server.js
+router.use("/posts", require("./posts"));
+router.use("/comments", require("./comments"));
+router.use("/auth", require("./auth"));
+router.use("/users", require("./users"));
+
+module.exports = router;

@@ -11,7 +11,7 @@ const cors = require("cors");
 const app = express(); // create express app
 
 /* ====  Configuration  ==== */
-
+const db = require('./models/index');
 
 app.use(cors());
 // to serve static files and to serve the react build

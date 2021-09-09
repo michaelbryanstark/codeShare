@@ -16,21 +16,21 @@ function CodeButton() {
             >
                 Nice Code!
             </button>
-            <p>{goodcode} many people think this is good code!</p>
+            <p>{goodcode} people think this is good code!</p>
             <button
                 style={{ margin: "12px" }}
                 onClick={() => setBadCode(badcode + 1)}
             >
                 Needs Work!
             </button>
-            <p>{badcode} many people think this needs some work!</p>
+            <p>{badcode} people think this needs some work!</p>
             <button
                 style={{ margin: "12px" }}
                 onClick={() => setUniqueCode(uniquecode + 1)}
             >
                 Unique Code!
             </button>
-            <p>{uniquecode} many people think this code is unique!</p>
+            <p>{uniquecode} people think this code is unique!</p>
         </div>
         
     );

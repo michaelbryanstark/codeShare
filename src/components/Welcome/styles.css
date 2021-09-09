@@ -1,0 +1,14 @@
+ .flex-body {
+    height: 50vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    
+.welcome-text {
+    padding: 15px;
+    color: rgb(44, 38, 29);
+    text-shadow: 0 0 12px #535353;
+}

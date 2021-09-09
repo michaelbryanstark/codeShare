@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 // JSON parsing middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* ====  Routes & Controllers  ==== */
 app.use("/api", routes);

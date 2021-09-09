@@ -2,9 +2,9 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* border: 2px solid black; */
+  border: 2px solid black;
 	font-family: "Space Mono", monospace;
-  background-color: rgb(245, 240, 235);
+  background-color: rgb(247, 235, 224);
 }
 
 body {

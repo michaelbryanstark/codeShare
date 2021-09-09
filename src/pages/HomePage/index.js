@@ -1,9 +1,14 @@
 import React from "react";
 import Welcome from "../../components/Welcome"
+import Post from "../../components/Post"
 
 function HomePage() {
     return(
-        <div><Welcome /></div>
+        <div>
+            <Welcome />
+            <Post />
+        
+        </div>
         
     )
 }

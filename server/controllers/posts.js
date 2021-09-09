@@ -63,14 +63,26 @@ const destroy = (req, res) => {
     });
 };
 
+// Show - GET - Presentational (for Comments)
+const showComments = (req, res) => {
+    db.Post.findById(req.params.id, (err, foundPost) => {
+        if (err) return console.log("Error in Comment#show", err);
+
+        return res.status(200).json({
+            message: "Success",
+            data: foundPost.comments,
+        });
+    });
+};
+
 module.exports = {
     index,
     show,
-    // showComments,
     create,
-    // createComment,
     update,
-    // updateComment,
     destroy,
+    showComments,
+    // createComment,
+    // updateComment,
     // destroyComment,
 };

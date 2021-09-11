@@ -10,8 +10,8 @@ router.put("/:id", posts.update);
 router.delete("/:id", posts.destroy);
 
 router.get("/:id/comments", posts.showComments);
-// router.post("/:id/comment", posts.createComment);
-// router.put("/:id/comment/:commentId", posts.updateComment);
-// router.delete("/:id/comment/:commentId", posts.destroyComment);
+router.post("/:id/comments", posts.createComment);
+router.put("/:id/comments/:commentId", posts.updateComment);
+router.delete("/:id/comments/:commentId", posts.destroyComment);
 
 module.exports = router;

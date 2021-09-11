@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Likes from "../Likes";
 import "./styles.css";
 import { func, string, array } from "prop-types";

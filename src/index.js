@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomePage from "../src/pages/HomePage";
+import NavBar from "./components/NavBar";
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomePage />
+    <Router>
+    <NavBar />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

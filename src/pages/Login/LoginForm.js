@@ -1,7 +1,10 @@
-import React, { Component, useState }from 'react';
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import "./style2.css";
+import * as UserService from "../../api/UserService";
+import { setToken } from "../../utils/tokenService";
 
-const Login = () => {
+const LoginForm = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,19 +26,9 @@ const Login = () => {
           alert("Server Error");
     }
   }
-};
 
-
-class LoginForm extends Component {
-  handleSubmit = e => {
-    e.preventDefault(); // prevents event default behavior 
-
-    // call the server 
-    console.log('submitted'); 
-  };
-  render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <div>
           <h1>Code Share</h1>
             </div>
@@ -44,12 +37,12 @@ class LoginForm extends Component {
                   <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="email"/>
                   <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password"/>
                   <button onClick={handleSubmit}>login</button>
-                  <p className="message">Not registered? <a href="/#">Create an account</a></p>
+                  <p className="message">Not registered? <a href="/signup">Create an account</a></p>
                </div>
              </div>
       </form>
     )
   };
-}; 
+ 
 
 export default LoginForm; 

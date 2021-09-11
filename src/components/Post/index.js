@@ -7,7 +7,7 @@ import * as PostService from "../../api/PostService";
 function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setTitle] = useState(title);
-    const [editedAuthor, setAuthor] = useState(author.lastName);
+    const [editedAuthor] = useState(author.lastName);
     const [editedBody, setBody] = useState(body);
 
     const handleEdit = async () => {

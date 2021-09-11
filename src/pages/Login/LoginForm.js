@@ -1,5 +1,29 @@
-import React, { Component }from 'react';
+import React, { Component, useState }from 'react';
 import "./style2.css";
+
+const Login = () => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async () => {
+      const user = {
+          email,
+          password,
+      };
+
+      const res = await UserService.login(user);
+      if (res.data.data) {
+          const token = res.data.data.token;
+          setToken(token);
+          setEmail("");
+          setPassword("");
+          history.push("/");
+      } else {
+          alert("Server Error");
+    }
+  }
+};
 
 
 class LoginForm extends Component {
@@ -25,7 +49,7 @@ class LoginForm extends Component {
              </div>
       </form>
     )
-  }
+  };
 }; 
 
 export default LoginForm; 

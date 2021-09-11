@@ -1,5 +1,4 @@
 const db = require("../models");
-const mongoose = require('mongoose')
 
 // ===== Index - GET - ALL posts by a user
 const index = (req, res) => {
@@ -25,8 +24,9 @@ const show = (req, res) => {
 
 // ===== Create - POST - Functional (Status code 201)
 const create = (req, res) => {
+    console.log(req.body);
     db.Post.create(req.body, (err, savedPost) => {
-        console.log(req.body);
+       
         if (err) return console.log("Error in Posts#create:", err);
 
         return res.status(201).json({
@@ -63,6 +63,24 @@ const destroy = (req, res) => {
     });
 };
 
+// ======== COMMENTS SECTION
+
+// Create - POST - Functional (For comments)
+const createComment = (req, res) => {
+    db.Post.findById(req.params.id)
+        .then((foundPost) => {
+
+            foundPost.comments.push(req.body);
+            foundPost.save();
+            
+            return res.status(201).json({
+                message: 'Success',
+                data: foundPost.comments,
+            });
+        })
+        .catch((err) => console.log(err));
+};
+
 // Show - GET - Presentational (for Comments)
 const showComments = (req, res) => {
     db.Post.findById(req.params.id, (err, foundPost) => {
@@ -75,6 +93,41 @@ const showComments = (req, res) => {
     });
 };
 
+// Update - PUT - Functional (For comments)
+const updateComment = (req, res) => {
+    db.Post.findById(req.params.id)
+        .then((foundPost) => {
+
+            const commentById = foundPost.comments.id(req.params.commentId);
+            commentById.body = req.body.body;
+            foundPost.save();
+
+            return res.status(202).json({
+                message: "Success",
+                data: commentById,
+            });
+        })
+        .catch((err) => console.log(err));
+};
+
+// Destroy - DELETE - Functional (For Comments)
+const destroyComment = (req, res) => {
+    db.Post.findById(req.params.id)
+        .then((foundPost) => {
+
+            const commentById = foundPost.comments.id(req.params.commentId);
+            commentById.remove();
+            foundPost.save();
+
+            return res.status(200).json({
+                message: "Success",
+                data: commentById,
+            });
+        })
+        .catch((err) => console.log(err));
+};
+
+
 module.exports = {
     index,
     show,
@@ -82,7 +135,7 @@ module.exports = {
     update,
     destroy,
     showComments,
-    // createComment,
-    // updateComment,
-    // destroyComment,
+    createComment,
+    updateComment,
+    destroyComment,
 };

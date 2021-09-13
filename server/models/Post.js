@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema(
     {
+        author: { type: Schema.Types.ObjectId, ref: "User" },
         body: { type: String, required: true },
         likes: Number,
     },
@@ -13,8 +14,8 @@ const commentSchema = new Schema(
 
 const postSchema = new Schema(
     {
-        // user: { type: Schema.Types.ObjectId, ref: "User" },
         title: { type: String, required: true },
+        author: { type: Schema.Types.ObjectId, ref: "User" },
         body: { type: String, required: true },
         likes: { type: Number },
         comments: [commentSchema]

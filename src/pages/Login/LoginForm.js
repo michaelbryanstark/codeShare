@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./style2.css";
 import * as UserService from "../../api/UserService";
 import { setToken } from "../../utils/tokenService";
 
 const LoginForm = () => {
-  const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const history = useHistory();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
-      const user = {
-          email,
-          password,
-      };
+    const handleSubmit = async () => {
+        const user = {
+            email,
+            password,
+        };
 
-      const res = await UserService.login(user);
-      if (res.data.data) {
-          const token = res.data.data.token;
-          setToken(token);
-          setEmail("");
-          setPassword("");
-          history.push("/");
-      } else {
-          alert("Server Error");
-    }
-  }
+        const res = await UserService.login(user);
+        if (res.data.data) {
+            const token = res.data.data.token;
+            console.log("FROM LOGIN FORM: ", token);
+            setToken(token);
+            setEmail("");
+            setPassword("");
+            history.push("/");
+        } else {
+            alert("Server Error");
+        }
+    };
 
     return (
       <form>

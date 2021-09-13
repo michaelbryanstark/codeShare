@@ -34,8 +34,8 @@ const LoginForm = () => {
             </div>
               <div className="login-page">
                 <div className="form">
-                  <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="email"/>
-                  <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password"/>
+                  <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email"/>
+                  <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="password"/>
                   <button onClick={handleSubmit}>login</button>
                   <p className="message">Not registered? <a href="/signup">Create an account</a></p>
                </div>

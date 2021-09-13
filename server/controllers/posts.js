@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 // ===== Index - GET - ALL posts by a user
 const index = (req, res) => {
@@ -24,13 +25,14 @@ const show = (req, res) => {
 
 // ===== Create - POST - Functional (Status code 201)
 const create = (req, res) => {
-    console.log(req.body);
+    req.body.author = mongoose.Types.ObjectId(req.body.author);
     db.Post.create(req.body, (err, savedPost) => {
-       
+        savedPost.populate("author");
+        console.log(savedPost, "SAVED POST IN CREATE POST");
         if (err) return console.log("Error in Posts#create:", err);
 
         return res.status(201).json({
-            message: 'Success',
+            message: "Success",
             data: savedPost,
         });
     });

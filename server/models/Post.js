@@ -5,7 +5,7 @@ const commentSchema = new Schema(
     {
         author: { type: Schema.Types.ObjectId, ref: "User" },
         body: { type: String, required: true },
-        likes: Number,
+        
     },
     {
         timestamps: true,

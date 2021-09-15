@@ -11,7 +11,7 @@ const routes = require('./routes');
 const app = express(); // create express app
 
 /* ====  Configuration  ==== */
-const db = require('./models/index');
+
 
 
 app.use(cors());

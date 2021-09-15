@@ -7,7 +7,7 @@ import * as PostService from "../../api/PostService";
 function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setTitle] = useState(title);
-    const [editedAuthor] = useState(author.lastName);
+    const [editedAuthor, setAuthor] = useState(author);
     const [editedBody, setBody] = useState(body);
 
     const handleEdit = async () => {
@@ -50,7 +50,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
                     <button onClick={handleDelete}>DELETE</button>
                 </div>
             </div>
-            <p>by {author.lastName}</p>
+            <p>by {author}</p>
             <div>
                 {!isEditing && <p className="post-body">{body}</p>}
                 {isEditing && (
@@ -81,9 +81,7 @@ Post.propTypes = {
     getPostsAgain: func,
 };
 
-Post.defaultProps = {
-    author: "Dwayne Johnson",
-};
+
 
 export default Post;
 

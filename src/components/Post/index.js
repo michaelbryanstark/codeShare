@@ -50,7 +50,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
                     <button onClick={handleDelete}>DELETE</button>
                 </div>
             </div>
-            <p>by {author}</p>
+            <p>by {}</p>
             <div>
                 {!isEditing && <p className="post-body">{body}</p>}
                 {isEditing && (

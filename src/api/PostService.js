@@ -24,6 +24,10 @@ const getAllComments = (id) => {
     return tellCodeShareTo.get(`/posts/${id}/comments`);
 }
 
+const getComments = (id, commentId) => {
+    return tellCodeShareTo.get(`/posts/${id}/comments/${commentId}`);
+};
+
 const createComment = (id, data) => {
     return tellCodeShareTo.post(`/posts/${id}/comments`, data);
 }
@@ -45,6 +49,7 @@ export {
     remove, 
     createComment, 
     getAllComments, 
+    getComments,
     updateComment, 
     removeComment 
 };

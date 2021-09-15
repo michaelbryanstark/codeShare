@@ -6,10 +6,10 @@ import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
 import CommentForm from "../CommentForm";
 
-function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
+function Post({ id, getPostsAgain, title, author, body, user }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setTitle] = useState(title);
-    const [editedAuthor, setAuthor] = useState(author.lastName);
+    const [Author] = useState(author);
     const [editedBody, setBody] = useState(body);
     const [comments, setComments] = useState([]);
 
@@ -18,7 +18,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
         if (isEditing) {
             let editedPost = {
                 title: editedTitle,
-                author: editedAuthor,
+                author: Author,
                 body: editedBody,
             };
             await PostService.update(id, editedPost);
@@ -62,7 +62,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
                     <button onClick={handleDelete}>DELETE</button>
                 </div>
             </div>
-            <p>by {author.lastName}</p>
+            <p>by {author.firstName}</p>
             <div>
                 {!isEditing && <p className="post-body">{body}</p>}
                 {isEditing && (
@@ -110,6 +110,7 @@ Post.propTypes = {
     body: string.isRequired,
     postComments: array,
     getPostsAgain: func,
+    getCommentsAgain: func,
 };
 
 Post.defaultProps = {

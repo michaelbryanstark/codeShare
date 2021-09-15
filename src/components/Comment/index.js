@@ -3,16 +3,16 @@ import "./styles.css";
 import * as PostService from "../../api/PostService";
 import { func, string } from "prop-types";
 
-function Comment({ id, author, body, getCommentsAgain, commentId }) {
+function Comment({ id, getCommentsAgain, author, body, commentId, user }) {
     const [isEditing, setIsEditing] = useState(false);
-    const [editedAuthor, setAuthor] = useState(author);
+    const [Author] = useState(author);
     const [editedBody, setBody] = useState(body);
 
     const handleEdit = async () => {
         setIsEditing(!isEditing);
         if (isEditing) {
             let editedPost = {
-                author: editedAuthor,
+                author: Author,
                 body: editedBody,
             };
             await PostService.updateComment(id, commentId, editedPost);
@@ -28,6 +28,7 @@ function Comment({ id, author, body, getCommentsAgain, commentId }) {
     return (
         <div className="comment">
             <span className="entry">
+            <p>by {author}</p>
                 {!isEditing && <span> {body}</span>}
                 {isEditing && (
                     <input

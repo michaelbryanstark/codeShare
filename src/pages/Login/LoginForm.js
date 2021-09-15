@@ -29,7 +29,7 @@ const LoginForm = () => {
     };
 
     return (
-      <form>
+      <div>
         <div>
           <h1>Code Share</h1>
             </div>
@@ -41,7 +41,7 @@ const LoginForm = () => {
                   <p className="message">Not registered? <a href="/signup">Create an account</a></p>
                </div>
              </div>
-      </form>
+      </div>
     )
   };
  

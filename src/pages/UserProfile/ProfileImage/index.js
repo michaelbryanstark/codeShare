@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const ProfileImage = (props) => {
+const ProfileImage = ({user}) => {
 
-    const [img, setImg] = useState(props.img);
+    const [img, setImg] = useState(user.img);
 
     const uploadImg = () => {}
 

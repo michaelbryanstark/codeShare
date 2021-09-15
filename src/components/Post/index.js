@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Likes from "../Likes";
+import Comment from "../Comment";
 import "./styles.css";
 import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
+import CommentForm from "../CommentForm";
 
 function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setTitle] = useState(title);
-    const [editedAuthor, setAuthor] = useState(author);
+    const [editedAuthor, setAuthor] = useState(author.lastName);
     const [editedBody, setBody] = useState(body);
+    const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
-        console.log("handleedit");
         setIsEditing(!isEditing);
-        //meaning submit is showing
         if (isEditing) {
             let editedPost = {
                 title: editedTitle,
@@ -29,6 +30,17 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
         await PostService.remove(id);
         getPostsAgain();
     };
+
+    async function fetchComments(id) {
+        let res = await PostService.getAllComments(id);
+        if (res.status === 200) {
+            setComments(res.data.data);
+        }
+    }
+
+    useEffect(() => {
+        fetchComments(id);
+    }, []);
 
     return (
         <div className="flex-post">
@@ -50,7 +62,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
                     <button onClick={handleDelete}>DELETE</button>
                 </div>
             </div>
-            <p>by {author}</p>
+            <p>by {author.lastName}</p>
             <div>
                 {!isEditing && <p className="post-body">{body}</p>}
                 {isEditing && (
@@ -66,8 +78,27 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
             <div className="likes">
                 <Likes />
             </div>
-            
-            
+            <div>
+                <h3>Comments</h3>
+                {comments.map((comment) => {
+                    return (
+                        <Comment
+                            author={comment.author}
+                            body={comment.body}
+                            key={comment._id}
+                            commentId={comment._id}
+                            id={id}
+                            getCommentsAgain={(id) => fetchComments(id)}
+                        />
+                    );
+                })}
+            </div>
+            <CommentForm
+                id={id}
+                user={user}
+                getPostsAgain={() => getPostsAgain()}
+                getCommentsAgain={(id) => fetchComments(id)}
+            />
         </div>
     );
 }
@@ -81,7 +112,8 @@ Post.propTypes = {
     getPostsAgain: func,
 };
 
-
+Post.defaultProps = {
+    author: "Dwayne Johnson",
+};
 
 export default Post;
-

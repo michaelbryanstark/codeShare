@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import HomePage from "../../pages/HomePage";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
+import UserProfile from "../../pages/UserProfile";
 
 import "./styles.css";
 
@@ -25,6 +26,9 @@ class Nav extends React.Component {
                     <Link to="/signup" style={linkStyle}>
                         Signup
                     </Link>
+                    <Link to="/profile" style={linkStyle}>
+                        Profile
+                    </Link>
                 </div>
                 <Switch>
                     <Route
@@ -39,6 +43,10 @@ class Nav extends React.Component {
                     <Route
                         path="/signup"
                         render={(props) => <Signup {...props} />}
+                    />
+                    <Route
+                        path="/profile"
+                        render={(props) => <UserProfile {...props} />}
                     />
                 </Switch>
             </div>

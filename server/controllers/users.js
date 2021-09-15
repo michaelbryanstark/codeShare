@@ -8,7 +8,6 @@ const index = async (req, res) => {
 };
 
 const create = (req, res) => {
-    console.log(req.body);
     db.User.create(req.body, (err, savedUser) => {
         if (err) return console.log("Error in User#create:", err);
 

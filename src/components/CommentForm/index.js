@@ -7,7 +7,6 @@ const CommentForm = ({ id, getCommentsAgain, getPostsAgain, user }) => {
     const [body, setBody] = useState("");
     const handleSubmit = async () => {
         let newComment = { author: user._id, body, id };
-        // console.log(newComment);
         const res = await PostService.createComment(id, newComment);
 
         if (res.status === 201) {
@@ -35,6 +34,7 @@ const CommentForm = ({ id, getCommentsAgain, getPostsAgain, user }) => {
 
 CommentForm.protoTypes = {
     id: string.isRequired,
+    getCommentsAgain: func,
     getPostsAgain: func,
 };
 

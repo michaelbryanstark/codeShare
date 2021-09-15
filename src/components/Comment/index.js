@@ -3,16 +3,13 @@ import "./styles.css";
 import * as PostService from "../../api/PostService";
 import { func, string } from "prop-types";
 
-const Comment = ({ id, author, body, getCommentsAgain, commentId }) => {
-    console.log(author, "IN COMMENTS");
+function Comment({ id, author, body, getCommentsAgain, commentId }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedAuthor, setAuthor] = useState(author);
     const [editedBody, setBody] = useState(body);
 
     const handleEdit = async () => {
-        console.log("handleedit");
         setIsEditing(!isEditing);
-        //meaning submit is showing
         if (isEditing) {
             let editedPost = {
                 author: editedAuthor,
@@ -31,17 +28,7 @@ const Comment = ({ id, author, body, getCommentsAgain, commentId }) => {
     return (
         <div className="comment">
             <span className="entry">
-                {!isEditing && <b>{author}</b>}
-                {isEditing && (
-                    <input
-                        onChange={(e) => setAuthor(e.target.value)}
-                        value={editedAuthor}
-                        type="text"
-                        name="author"
-                        placeholder="AUTHOR"
-                    />
-                )}
-                :{!isEditing && <span> {body}</span>}
+                {!isEditing && <span> {body}</span>}
                 {isEditing && (
                     <input
                         onChange={(e) => setBody(e.target.value)}
@@ -67,7 +54,7 @@ Comment.propTypes = {
     author: string.isRequired,
     body: string.isRequired,
     commentId: string.isRequired,
-    getPostsAgain: func,
+    getCommentsAgain: func,
 };
 
 export default Comment;

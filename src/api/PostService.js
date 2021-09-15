@@ -33,10 +33,10 @@ const updateComment = (id, commentId, data) => {
 }
 
 const removeComment = (id, commentId) => {
-    return tellCodeShareTo.delete(`/posts/${id}/comment/${commentId}`);
+    return tellCodeShareTo.delete(`/posts/${id}/comments/${commentId}`);
 }
 
-// You can only export default when there's one thing to export
+// You can only export default when there's one thing to export (good reminder)
 export { 
     getAll, 
     create, 

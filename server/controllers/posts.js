@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 
 // ===== Index - GET - ALL posts by a user
 const index = (req, res) => {
-    db.Post.find((err, posts) => {
+    console.log("REQ.USER: ", req.user);
+    db.Post.find()
+        .populate("author")
+        .exec((err, populatedPosts) => {
             return res.status(200).json({
-                message: 'Success',
-                data: posts,
+                message: "Success",
+                data: populatedPosts,
             });
         });
 };
@@ -97,19 +100,19 @@ const showComments = (req, res) => {
 
 // Update - PUT - Functional (For comments)
 const updateComment = (req, res) => {
-    db.Post.findById(req.params.id)
-        .then((foundPost) => {
+    db.Post.findById(req.params.id).then((foundPost) => {
+        if (!foundPost) return console.log("Error in Comment#update");
 
-            const commentById = foundPost.comments.id(req.params.commentId);
-            commentById.body = req.body.body;
-            foundPost.save();
+        const commentById = foundPost.comments.id(req.params.commentId);
+        commentById.author = req.body.author;
+        commentById.body = req.body.body;
+        foundPost.save();
 
-            return res.status(202).json({
-                message: "Success",
-                data: commentById,
-            });
-        })
-        .catch((err) => console.log(err));
+        return res.status(202).json({
+            message: "Success",
+            data: commentById,
+        });
+    });
 };
 
 // Destroy - DELETE - Functional (For Comments)

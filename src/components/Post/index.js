@@ -14,9 +14,7 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
     const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
-        console.log("handleedit");
         setIsEditing(!isEditing);
-        //meaning submit is showing
         if (isEditing) {
             let editedPost = {
                 title: editedTitle,
@@ -83,7 +81,6 @@ function Post({ id, getPostsAgain, title, author, body, postComments, user }) {
             <div>
                 <h3>Comments</h3>
                 {comments.map((comment) => {
-                    // console.log("WHICH DATA AM I USING: ", comment);
                     return (
                         <Comment
                             author={comment.author}
@@ -116,7 +113,7 @@ Post.propTypes = {
 };
 
 Post.defaultProps = {
-    author: "Marianne Williamson",
+    author: "Dwayne Johnson",
 };
 
 export default Post;

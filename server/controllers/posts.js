@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 
 // ===== Index - GET - ALL posts by a user
 const index = (req, res) => {
-    db.Post.find((err, posts) => {
+    console.log("REQ.USER: ", req.user);
+    db.Post.find()
+        .populate("author")
+        .exec((err, populatedPosts) => {
             return res.status(200).json({
-                message: 'Success',
-                data: posts,
+                message: "Success",
+                data: populatedPosts,
             });
         });
 };

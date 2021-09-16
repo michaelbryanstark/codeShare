@@ -35,6 +35,7 @@ function Post({ id, getPostsAgain, title, author, body, user, post }) {
         let res = await PostService.getAllComments(id);
         if (res.status === 200) {
             setComments(res.data.data);
+            console.log(res);
         }
     }
 

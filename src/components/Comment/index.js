@@ -58,4 +58,8 @@ Comment.propTypes = {
     getCommentsAgain: func,
 };
 
+Comment.defaultProps = {
+    author: "Dwayne Johnson",
+};
+
 export default Comment;

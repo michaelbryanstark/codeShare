@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { func } from "prop-types";
 import * as PostService from "../../api/PostService";
 
-const CodeButton = ({id, getLikesAgain, user}) => {
+const CodeButton = ({id, getLikesAgain, author}) => {
     const [goodcode, setGoodCode] = useState(0);
     const [badcode, setBadCode] = useState(0);
     const [uniquecode, setUniqueCode] = useState(0);
     
     const handleSubmit = async () => {
-        let newLike = { author: user._id, goodcode, badcode, uniquecode };
+        let newLike = { author, goodcode, badcode, uniquecode };
         const res = await PostService.createLike(id, newLike);
         if (res.status === 201) {
             setGoodCode(0);

@@ -6,7 +6,7 @@ import { func, string, array } from "prop-types";
 import * as PostService from "../../api/PostService";
 import CommentForm from "../CommentForm";
 
-function Post({ id, getPostsAgain, title, author, body, user }) {
+function Post({ id, getPostsAgain, title, author, body, user, post }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setTitle] = useState(title);
     const [Author] = useState(author);
@@ -15,7 +15,7 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
 
     const handleEdit = async () => {
         setIsEditing(!isEditing);
-        if (isEditing) {
+        if (isEditing)  {
             let editedPost = {
                 title: editedTitle,
                 author: Author,
@@ -41,12 +41,12 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
     useEffect(() => {
         fetchComments(id);
     }, []);
-
+    
     return (
         <div className="flex-post">
             <div className="top-row">
                 {!isEditing && <h1>{title}</h1>}
-                {isEditing && (
+                {isEditing && (post.author === user._id)(
                     <input
                         onChange={(e) => setTitle(e.target.value)}
                         value={editedTitle}

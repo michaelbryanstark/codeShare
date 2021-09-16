@@ -40,6 +40,18 @@ const removeComment = (id, commentId) => {
     return tellCodeShareTo.delete(`/posts/${id}/comments/${commentId}`);
 }
 
+const getAllLikes = (id) => {
+    return tellCodeShareTo.get(`/posts/${id}/likes`);
+}
+
+const getLikes = (id, likeId) => {
+    return tellCodeShareTo.get(`/posts/${id}/likes/${likeId}`);
+};
+
+const createLike = (id, data) => {
+    return tellCodeShareTo.post(`/posts/${id}/likes`, data);
+}
+
 // You can only export default when there's one thing to export (good reminder)
 export { 
     getAll, 
@@ -51,5 +63,8 @@ export {
     getAllComments, 
     getComments,
     updateComment, 
-    removeComment 
+    removeComment,
+    getAllLikes,
+    getLikes,
+    createLike 
 };

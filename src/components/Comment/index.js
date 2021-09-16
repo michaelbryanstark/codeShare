@@ -28,7 +28,7 @@ function Comment({ id, getCommentsAgain, author, body, commentId, user }) {
     return (
         <div className="comment">
             <span className="entry">
-            <p>by {author}</p>
+            <p>by {author.firstName}</p>
                 {!isEditing && <span> {body}</span>}
                 {isEditing && (
                     <input

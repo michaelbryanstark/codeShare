@@ -14,6 +14,8 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
     const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
+
+
         setIsEditing(!isEditing);
         if (isEditing) {
             let editedPost = {
@@ -55,12 +57,15 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
                         placeholder="TITLE"
                     />
                 )}
-                <div>
-                    <button onClick={handleEdit}>
-                        {isEditing ? "SUBMIT" : "EDIT"}
-                    </button>
-                    <button onClick={handleDelete}>DELETE</button>
-                </div>
+                {user._id === author._id && (
+                    <div>
+                        <button onClick={handleEdit}>
+                            {isEditing ? "SUBMIT" : "EDIT"}
+                        </button>
+                        <button onClick={handleDelete}>DELETE</button>
+                    </div>
+                )}
+
             </div>
             <p>by {author.firstName}</p>
             <div>

@@ -25,6 +25,9 @@ const PostForm = ({ getPostsAgain, user }) => {
     }
     return (
         <div className="PostForm-inputs">
+            <p>
+                {user.firstName} {user.lastName}
+            </p>
             <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
@@ -32,9 +35,6 @@ const PostForm = ({ getPostsAgain, user }) => {
                 name="title"
                 placeholder="TITLE"
             />
-            <p>
-                {user.firstName} {user.lastName}
-            </p>
             <input
                 onChange={(e) => setBody(e.target.value)}
                 value={body}

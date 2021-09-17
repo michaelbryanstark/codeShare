@@ -31,7 +31,7 @@ const LoginForm = () => {
     return (
       <div>
         <div>
-          <h1>Code Share</h1>
+          <h1 className='login-h1'>Code Share</h1>
             </div>
               <div className="login-page">
                 <div className="form">

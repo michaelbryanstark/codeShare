@@ -1,9 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-h1 {
+.login-h1 {
     color: rgb(30, 208, 221);
     position: relative;
     text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    /* margin-top: 20px; */
+    top: 80px;
+    margin-bottom: 0px;
+    font-size: 40px;
 }
 
 .login-page {
@@ -46,9 +51,6 @@ h1 {
   transition: all 0.3 ease;
   cursor: pointer;
   margin-left: auto;
-}
-.form button:hover,.form button:active,.form button:focus {
-  background: #080808;
 }
 .form .message {
   margin: 15px 0 0;

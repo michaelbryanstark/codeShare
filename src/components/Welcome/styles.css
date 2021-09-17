@@ -19,6 +19,7 @@
     text-transform: uppercase;
     letter-spacing: 1rem;
     margin: 0;
-    
+    animation: fadeIn ease 3s;
+  	opacity: 1;    
   }
 

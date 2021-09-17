@@ -3,7 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
   /* border: 2px solid black; */
-	font-family: "Space Mono", monospace;
+	/* font-family: "Space Mono", monospace; */
   background-color: white; 
 
 }
@@ -19,9 +19,5 @@ body {
   
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 
-}
 

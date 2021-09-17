@@ -27,7 +27,7 @@ const CommentForm = ({ id, getCommentsAgain, getPostsAgain, user }) => {
                 name="body"
                 placeholder="BODY GOES HERE"
             />
-            <button onClick={handleSubmit}>Add Comment +</button>
+            <button className='comment-button' onClick={handleSubmit}>Add Comment +</button>
         </div>
     );
 };

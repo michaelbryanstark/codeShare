@@ -15,5 +15,10 @@
     color: rgb(22, 174, 212);
     text-shadow: 0 0 12px grey;
     font-family: 'Orbitron', sans-serif;
-    font-size: 50px;
-}
+    font-size: 40px; 
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    margin: 0;
+    
+  }
+

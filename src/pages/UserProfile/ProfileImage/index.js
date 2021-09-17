@@ -9,7 +9,7 @@ const ProfileImage = ({user}) => {
         return (
             <div className='ProfileImage'>
                 <FontAwesomeIcon icon={faUser} size={'6x'} />
-                <UploadImageForm />
+                <UploadImageForm trigger={false} user={user}/>
             </div>
         )
         
@@ -18,7 +18,7 @@ const ProfileImage = ({user}) => {
     return (
         <div className='ProfileImage'>
             <img src={user.img} alt='profile' />
-            <UploadImageForm user={user}/>
+            <UploadImageForm trigger={false} user={user}/>
         </div>
     )
 }

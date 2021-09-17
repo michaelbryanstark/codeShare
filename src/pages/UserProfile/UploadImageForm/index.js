@@ -1,8 +1,8 @@
 import React, { useState }from "react";
 import * as UserService from '../../../api/UserService'
-import Popup from 'reactjs-popup';
+import './style.css'
 
-const UploadImageForm = ({ user }) => {
+const UploadImageForm = (props) => {
     const [uploadImg, setUploadImg] = useState();
   
   const submitForm = (event) => {
@@ -12,18 +12,17 @@ const UploadImageForm = ({ user }) => {
     const data = {
       "img": uploadImg
     }
-    console.log(user, data);
-    UserService.update(user._id, uploadImg)
+    console.log(data);
+    UserService.update(user._id, data)
 }
 
 
-  return (
-    <Popup 
-        trigger={<button> Change profile picture</button>}
-        position="top left">
-        <div>
+  return (props.trigger) ? (
+        <div className="popup">
+          <div className="popup-inner">
             <form onSubmit={submitForm}>
                 
+                <label>Enter Image Url: </label>
                 <input 
                     type="text" 
                     onChange={(e) => setUploadImg(e.target.value)}
@@ -32,10 +31,13 @@ const UploadImageForm = ({ user }) => {
                 <br />
                 <input type="submit" />
             </form>
+            <button className='close-btn'>close</button>
+
+          </div>
         </div>
 
-    </Popup>
-  );
+
+  ) : "";
 }
 
 export default UploadImageForm

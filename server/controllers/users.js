@@ -1,4 +1,5 @@
 const db = require("../models");
+const fs = require('fs')
 const createJWT = require("./helpers");
 
 const index = async (req, res) => {
@@ -19,4 +20,20 @@ const create = (req, res) => {
     });
 };
 
-module.exports = { index, create };
+const update = (req, res) => {
+    console.log('update controller')
+    db.User.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },
+        (err, updatedUser) => {
+        if (err) console.log('ERROR: UPDATING USER', err);
+
+        return res.status(202).json({
+            message: "Success",
+            data: updatedUser,
+        });
+    });
+}
+
+module.exports = { index, create, update };

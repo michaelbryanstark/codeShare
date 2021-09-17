@@ -28,7 +28,7 @@ const HomePage = () => {
                 <Welcome />
                 <PostForm user={user} getPostsAgain={() => fetchPosts()} />
                 {posts.map((post) => {
-                    // console.log("WHICH DATA AM I USING: ", post);
+                    console.log("WHICH DATA AM I USING: ", post);
                     return (
                         <Post
                             user={user}

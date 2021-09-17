@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Likes from "../Likes";
 import Comment from "../Comment";
 import "./styles.css";
-import { func, string, array } from "prop-types";
+import { func, string, array, object } from "prop-types";
 import * as PostService from "../../api/PostService";
 import CommentForm from "../CommentForm";
 
@@ -106,7 +106,7 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
 Post.propTypes = {
     id: string.isRequired,
     title: string.isRequired,
-    author: string.isRequired,
+    author: object.isRequired,
     body: string.isRequired,
     postComments: array,
     getPostsAgain: func,

@@ -1,29 +1,26 @@
-// import React, { useState, useEffect } from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUser } from '@fortawesome/free-solid-svg-icons';
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import UploadImageForm from '../UploadImageForm';
 
-// const ProfileImage = ({user}) => {
+const ProfileImage = ({user}) => {
 
-//     const [img, setImg] = useState(user.img);
-
-//     const uploadImg = () => {}
-
-//     const handleOnClick = () => {
+    if (user.img === undefined) {
+        return (
+            <div className='ProfileImage'>
+                <FontAwesomeIcon icon={faUser} size={'6x'} />
+                <UploadImageForm />
+            </div>
+        )
         
-//     }
+    }
 
-//     console.log(img);
+    return (
+        <div className='ProfileImage'>
+            <img src={user.img} alt='profile' />
+            <UploadImageForm user={user}/>
+        </div>
+    )
+}
 
-//     if (img === undefined) {
-//         return (
-//             <div className='ProfileImage'
-//                 onClick={handleOnClick}
-//             >
-//                 <FontAwesomeIcon icon={faUser} size={'6x'} />
-//             </div>
-//         )
-        
-//     }
-// }
-
-// export default ProfileImage
+export default ProfileImage

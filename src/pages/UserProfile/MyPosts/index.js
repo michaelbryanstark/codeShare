@@ -9,15 +9,17 @@ const MyPosts = ({user}) => {
     async function fetchPosts() {
         let res = await PostService.getAll();
         console.log("POST SERVICE RESPONSE: ", res.data);
+        console.log(user)
 
         const posts = []
         if (res.status === 200) {
             res.data.data.forEach((post, index) => {
-                if (post.author === user._id) {
-
+                if (post.author._id === user._id) {
+                    // console.log(post)
                     posts.push([post.title, post.likes])
                 }
             })
+            
             setMyPosts(posts);
         }
     }

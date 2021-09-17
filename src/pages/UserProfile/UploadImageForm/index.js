@@ -14,6 +14,8 @@ const UploadImageForm = (props) => {
     }
     console.log(data);
     UserService.update(user._id, data)
+    
+    window.location = 'profile'
 }
 
 

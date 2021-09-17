@@ -42,7 +42,7 @@ const PostForm = ({ getPostsAgain, user }) => {
                 name="body"
                 placeholder="BODY GOES HERE"
             />
-            <button onClick={handleSubmit}>Add Post </button>
+            <button className='post-button' onClick={handleSubmit}>Add Post </button>
         </div>
     );
 };

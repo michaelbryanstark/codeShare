@@ -66,7 +66,7 @@ const SignupForm = () => {
                 title="password"
                 placeholder="Password"
             />
-            <button onClick={handleSubmit}>SIGNUP TO START SHARING CODE </button>
+            <button className='submit-button' onClick={handleSubmit}>SIGNUP TO START SHARING CODE </button>
         </div>
     );
 };

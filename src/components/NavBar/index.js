@@ -2,10 +2,11 @@ import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import HomePage from "../../pages/HomePage";
 import Login from "../../pages/Login";
+import Logout from "../../components/Logout";
 import Signup from "../../pages/Signup";
 import UserProfile from "../../pages/UserProfile";
-
 import "./styles.css";
+
 
 const linkStyle = {
     padding: "5px",
@@ -23,6 +24,9 @@ class Nav extends React.Component {
                     <Link to="/login" style={linkStyle}>
                         Login
                     </Link>
+                    <Link to="/logout" style={linkStyle}>
+                        Logout
+                    </Link>
                     <Link to="/signup" style={linkStyle}>
                         Signup
                     </Link>
@@ -39,6 +43,10 @@ class Nav extends React.Component {
                     <Route
                         path="/login"
                         render={(props) => <Login {...props} />}
+                    />
+                      <Route
+                        path="/logout"
+                        render={(props) => <Logout {...props} />}
                     />
                     <Route
                         path="/signup"

@@ -15,11 +15,13 @@
     color: rgb(22, 174, 212);
     text-shadow: 0 0 12px grey;
     font-family: 'Orbitron', sans-serif;
-    font-size: 40px; 
+    font-size: 30px; 
     text-transform: uppercase;
     letter-spacing: 1rem;
     margin: 0;
     animation: fadeIn ease 3s;
-  	opacity: 1;    
+  	opacity: 1;  
+    text-size-adjust: auto;
   }
+
 

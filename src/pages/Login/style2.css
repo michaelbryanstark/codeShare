@@ -9,6 +9,8 @@
     top: 80px;
     margin-bottom: 0px;
     font-size: 40px;
+    text-size-adjust: auto;
+
 }
 
 .login-page {

@@ -45,7 +45,7 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
     return (
         <div className="flex-post">
             <div className="top-row">
-                {!isEditing && <h1>{title}</h1>}
+                {!isEditing && <h1 className='post-h1'>{title}</h1>}
                 {isEditing && (
                     <input
                         onChange={(e) => setTitle(e.target.value)}

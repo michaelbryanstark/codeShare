@@ -15,4 +15,8 @@ function getUser() {
     return user;
 }
 
-export { create, login, getUser };
+const update = (id, data) => {
+    return tellCodeShareTo.put(`/users/${id}`, data)
+}
+
+export { create, login, getUser, update };

@@ -28,6 +28,7 @@ const HomePage = () => {
                 <Welcome />
                 <PostForm user={user} getPostsAgain={() => fetchPosts()} />
                 {posts.map((post) => {
+                
                     return (
                         <Post
                             user={user}

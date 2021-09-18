@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Likes from "../Likes";
 import Comment from "../Comment";
 import "./styles.css";
-import { func, string, array } from "prop-types";
+import { func, string, array, object } from "prop-types";
 import * as PostService from "../../api/PostService";
 import CommentForm from "../CommentForm";
 
@@ -14,6 +14,8 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
     const [comments, setComments] = useState([]);
 
     const handleEdit = async () => {
+
+
         setIsEditing(!isEditing);
         if (isEditing) {
             let editedPost = {
@@ -55,12 +57,15 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
                         placeholder="TITLE"
                     />
                 )}
-                <div>
-                    <button onClick={handleEdit}>
-                        {isEditing ? "SUBMIT" : "EDIT"}
-                    </button>
-                    <button onClick={handleDelete}>DELETE</button>
-                </div>
+                {user._id === author._id && (
+                    <div>
+                        <button onClick={handleEdit}>
+                            {isEditing ? "SUBMIT" : "EDIT"}
+                        </button>
+                        <button onClick={handleDelete}>DELETE</button>
+                    </div>
+                )}
+
             </div>
             <p>by {author.firstName}</p>
             <div>
@@ -106,7 +111,7 @@ function Post({ id, getPostsAgain, title, author, body, user }) {
 Post.propTypes = {
     id: string.isRequired,
     title: string.isRequired,
-    author: string.isRequired,
+    author: object.isRequired,
     body: string.isRequired,
     postComments: array,
     getPostsAgain: func,

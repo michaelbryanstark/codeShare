@@ -22,7 +22,10 @@ const LoginForm = () => {
             setToken(token);
             setEmail("");
             setPassword("");
-            history.push("/");
+            // history.push("/");
+
+            //PAGE NEEDS TO RELOAD TO SEE NAV LINKS CHANGE
+            window.location = '/'; 
         } else {
             alert("Server Error");
         }

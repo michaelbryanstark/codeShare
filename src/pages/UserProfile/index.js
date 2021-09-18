@@ -8,7 +8,13 @@ const UserProfile = () => {
 
     const [user] = useState(getUser)
 
-
+    if (!user) {
+        return (
+            <div>
+                <h2>Go to Login to see your Posts</h2>
+            </div>
+        )
+    }
     return (
         <div>
             <ProfileImage user={user} />

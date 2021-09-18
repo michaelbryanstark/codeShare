@@ -29,7 +29,6 @@ As developers, we often look for a place to share and find code. CodeShare was c
   
 ## Future Enhancements
 
-* Users to only be able to edit and delete their own post
 * User have a profile that will display on the NavBar that will have the login/logout feature depending if they are logged in and logged out.
 * User post images.
 * Code that is displayed in a code block.

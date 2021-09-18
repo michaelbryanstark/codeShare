@@ -24,8 +24,7 @@ As developers, we often look for a place to share and find code. CodeShare was c
 ## Unsolved Problems
 
 * Comments to state the users name.
-* Log out feature to only display when the user is logged in
-* The user being able to edit and delete other users  comments.
+* The user being able to edit and delete other users comments.
 * Allow users to follow other users.
   
 ## Future Enhancements
